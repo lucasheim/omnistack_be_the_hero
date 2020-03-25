@@ -1,13 +1,13 @@
-const express = require("express");
-const routes = require("./routes");
-const cors = require("cors");
-
-const app = express();
-
-app.use(cors());
-
-app.use(express.json());
-
-app.use(routes);
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = __importDefault(require("express"));
+var cors_1 = __importDefault(require("cors"));
+var routes_1 = require("./routes");
+var app = express_1.default();
+app.use(cors_1.default());
+app.use(express_1.default.json());
+app.use(routes_1.routes);
 app.listen(3333);
