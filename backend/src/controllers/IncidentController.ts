@@ -28,7 +28,7 @@ export namespace IncidentController {
     
     export async function create(request: Request, response: Response): Promise<Response<any>> {
         const { title, description, value } = request.body;
-        const ong_id = request.headers.authorization;
+        const ong_id = request.headers.Authorization;
     
         const [ id ] = await connection("incidents").insert({
             title,
@@ -48,6 +48,8 @@ export namespace IncidentController {
         .where("id", id)
         .select("ong_id")
         .first();
+
+        console.log(incident);
     
         if (incident.ong_id !== ong_id) {
             return response.status(401).json({ error: "Operation not permitted" });
